@@ -1,13 +1,9 @@
 # Landing Page Project
 
-## Table of Contents
+this project is part of Udacity's front end nanodegree
 
-* [Instructions](#instructions)
+## Project main features
 
-## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+- use vanilla javascript to create main navigation dynamically based on the number of sections added.
+- add smooth scroll to the sections when the nav links are clicked
+- add active class the the sections and its relevant menu item when near top of viewport
