@@ -38,15 +38,12 @@ const navFragment = document.createDocumentFragment();
 // build the nav
 for(section of sections) {
     const navLinkText = section.getAttribute('data-nav');
-    const navLinkAnchor = section.getAttribute('id');
+    const navLinkAnchor = section.id;
     const navItem = document.createElement('li');
     navItem.innerHTML = `<a href="#${navLinkAnchor}">${navLinkText}</a>`;
     navFragment.appendChild(navItem);
 }
 nav.appendChild(navFragment);
-
-
-// Add class 'active' to section when near top of viewport
 
 
 // Scroll to anchor ID using scrollIntoView method
@@ -59,6 +56,32 @@ nav.addEventListener('click', e => {
         });
     }
 });
+
+
+// Add class 'active' to section when near top of viewport
+function handleIntersection(entries) {
+    entries.map((entry) => {
+        const targetId = entry.target.id;
+        const targetSection = document.querySelector(`#${targetId}`);
+        const targetNavItem = document.querySelector(`a[href="#${targetId}"]`).parentElement;
+        if(entry.isIntersecting) {
+            targetNavItem.classList.add('active');
+            targetSection.classList.add('active');
+        } else {
+            targetNavItem.classList.remove('active');
+            targetSection.classList.remove('active');
+        }
+    });
+}
+
+const options = {
+    root: null,
+    rootMargin: '160px',
+    threshold: .9
+}
+
+const observer = new IntersectionObserver(handleIntersection, options);
+sections.forEach(section => observer.observe(section));
 
 /**
  * End Main Functions
