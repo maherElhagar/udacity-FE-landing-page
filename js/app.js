@@ -49,8 +49,16 @@ nav.appendChild(navFragment);
 // Add class 'active' to section when near top of viewport
 
 
-// Scroll to anchor ID using scrollTO event
-
+// Scroll to anchor ID using scrollIntoView method
+nav.addEventListener('click', e => {
+    if(e.target.nodeName === 'A') {
+        e.preventDefault();
+        let target = document.querySelector(e.target.getAttribute('href'));
+        target.scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+});
 
 /**
  * End Main Functions
