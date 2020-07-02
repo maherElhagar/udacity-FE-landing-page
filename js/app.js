@@ -17,7 +17,9 @@
  * Define Global Variables
  * 
 */
-
+let sections = document.querySelectorAll('section');
+let nav = document.getElementById('navbar__list');
+const navFragment = document.createDocumentFragment();
 
 /**
  * End Global Variables
@@ -34,6 +36,14 @@
 */
 
 // build the nav
+for(section of sections) {
+    const navLinkText = section.getAttribute('data-nav');
+    const navLinkAnchor = section.getAttribute('id');
+    const navItem = document.createElement('li');
+    navItem.innerHTML = `<a href="#${navLinkAnchor}">${navLinkText}</a>`;
+    navFragment.appendChild(navItem);
+}
+nav.appendChild(navFragment);
 
 
 // Add class 'active' to section when near top of viewport
