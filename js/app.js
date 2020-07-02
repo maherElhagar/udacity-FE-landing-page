@@ -40,7 +40,7 @@ for(section of sections) {
     const navLinkText = section.getAttribute('data-nav');
     const navLinkAnchor = section.id;
     const navItem = document.createElement('li');
-    navItem.innerHTML = `<a href="#${navLinkAnchor}">${navLinkText}</a>`;
+    navItem.innerHTML = `<a class="menu__link" href="#${navLinkAnchor}">${navLinkText}</a>`;
     navFragment.appendChild(navItem);
 }
 nav.appendChild(navFragment);
@@ -66,10 +66,10 @@ function handleIntersection(entries) {
         const targetNavItem = document.querySelector(`a[href="#${targetId}"]`).parentElement;
         if(entry.isIntersecting) {
             targetNavItem.classList.add('active');
-            targetSection.classList.add('active');
+            targetSection.classList.add('section-active');
         } else {
             targetNavItem.classList.remove('active');
-            targetSection.classList.remove('active');
+            targetSection.classList.remove('section-active');
         }
     });
 }
